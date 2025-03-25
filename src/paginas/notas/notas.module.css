@@ -1,0 +1,68 @@
+
+
+
+.buscador{
+    border:1px solid gray;
+    border-radius:40px;
+    display:flex;
+    width:620px;
+    margin:50px auto;
+    overflow: hidden;
+}
+.buscador input{
+    border:none;
+    outline: none;
+    font-size:20px;
+    width:100%;
+    padding:14px 20px;
+}
+.buscador button{
+    border:none;
+    background:none;
+    font-size:18px;
+    padding:10px 40px;
+    border-radius:40px;
+    cursor:pointer;
+    transition: 0.4s;
+}
+.buscador button:hover{
+    background:rgb(75, 75, 75);
+    color:#f4f4f4;
+}
+
+
+/* CAJA notas estilos */
+.lista{
+    display:flex;
+    flex-wrap: wrap;
+    gap:10px;
+}
+/* estilos de las notas */
+.nota{
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border:1px solid rgb(203, 203, 203);
+    padding:10px;
+    width:350px;
+    border-radius: 10px;
+    margin:5px;
+}
+.nota p{
+    color:gray;
+}
+.nota h4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:50%;
+    min-width:25px;
+    min-height:25px;
+    margin:0px 5px 0px 10px;
+    cursor:pointer;
+    color:rgb(232, 54, 0);
+    transition: 0.4s;
+}
+.nota h4:hover{
+    transform: scale(1.1);
+}

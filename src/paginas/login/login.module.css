@@ -1,0 +1,111 @@
+
+.iniciarSesion{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fdfdfd;
+}
+.formulario_sesion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:70px;
+}
+.formulario_sesion input{
+    padding:10px 20px;
+    margin:10px;
+    outline: none;
+    border:none;
+    border-bottom:1px solid rgb(201, 201, 201);
+    width:300px;
+    font-size:20px;
+    color:gray;
+    background:none;
+    letter-spacing: 3px;
+}
+.formulario_sesion input::placeholder{
+    color:rgb(210, 210, 210);
+}
+.mirrar{
+    cursor: pointer;
+    opacity: 70%;
+}
+.formulario_sesion button{
+    padding:10px 20px;
+    width:130px;
+    border-radius:7px;
+    background:none;
+    margin-top:20px;
+    border:1px solid gray;
+    cursor:pointer;
+}
+.formulario_sesion button:hover{
+    border:1px solid lightblue;
+    color:lightblue;
+    box-shadow: 1px 3px 10px rgb(212, 235, 243);
+}
+
+.crear{
+    margin:20px 0px 30px 0px;
+    cursor: pointer;
+    position: relative;
+    padding:5px;
+    color:rgb(12, 12, 101);
+    text-decoration: none;
+}
+.crear::after{
+    content:'';
+    width:20px;
+    height:2px;
+    border-radius: 5px;;
+    background:blue;
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform: translate(-50%,-50%);
+    transition: 0.5s;
+}
+.crear:hover::after{
+    width:60px;
+}
+
+/* DETALLES */
+.detalle{
+    padding:20px;
+    background:#fcfcfc;
+    border-radius: 10px;
+    cursor: pointer;
+    color:rgb(70, 70, 70);
+    transition: 1s;
+}
+.detalle div{
+    display:flex;
+    justify-content: space-between;
+    padding:4px 7px;
+    margin-top:10px;
+    border-radius: 5px;
+}
+.detalle div:hover{
+    background:rgb(52, 52, 52);
+    color:#f2f2f2;
+}
+
+
+/* REGISTER ESTILOS [ROL] */
+.rol{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background:rgb(244, 244, 244);
+    width:315px;
+    padding:8px 15px;
+    border-radius: 10px;
+}
+.rol select{
+    padding:8px 20px;
+    border-radius:5px;
+    border:none;
+    outline: none;
+}

@@ -1,0 +1,34 @@
+
+.title{
+    text-align: center;
+    margin-top: 150px;
+    color:rgb(163, 163, 163);
+    font-weight: bold;
+    font-size: 25px;
+}
+.caja_analisis{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+    height:55%;
+}
+.caja_analisis > div{
+    width:150px;
+    height:150px;
+    background:rgb(247, 247, 247);
+    padding:15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.7s;
+}
+.caja_analisis > div:hover{
+    margin:0px 50px;
+}
+.caja_analisis div h2{
+    font-size:70px;
+}

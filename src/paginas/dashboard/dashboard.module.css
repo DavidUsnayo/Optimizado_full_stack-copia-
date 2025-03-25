@@ -1,0 +1,14 @@
+
+.caja_subMenus{
+    padding:20px;
+    margin:25px;
+    width:80%;
+    border-radius:20px;
+    background:white;
+}
+
+@media(max-width:950px){
+    .caja_subMenus{
+        zoom:0.5;
+    }
+}
