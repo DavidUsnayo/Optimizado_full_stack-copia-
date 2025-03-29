@@ -12,6 +12,8 @@ export  function Register(){
     const [rol, setRol] = useState('usuario')
     const [visible, setVisible] = useState(false);
 
+    const [carga, setCarga] = useState(false)
+
     const navigate = useNavigate()
     const API_URL = import.meta.env.VITE_API_URL;
 
@@ -23,6 +25,7 @@ export  function Register(){
 
     function crearCuenta(e){
         e.preventDefault()
+        setCarga(true)
         fetch(`${API_URL}/auth/registro`,{
             method: "POST",
             headers: {
@@ -39,9 +42,14 @@ export  function Register(){
             console.log(data)
             localStorage.setItem('token',data.token)
             localStorage.setItem('person',JSON.stringify(data.person))
-            almacenarInfoEnContexto()
+            return almacenarInfoEnContexto()
+        })
+        .then(()=>{
             navigate('/dashboard/notas')
         })
+        .catch((err)=>{console.log('se produjo un error en fetch ', err)})
+        .finally(()=>{setCarga(false)})
+
     }
 
     return(
@@ -62,7 +70,7 @@ export  function Register(){
                             <option value="admin">Admin</option>
                         </select>
                     </div>
-                    <button onClick={(e)=>crearCuenta(e)}>Crear Cuenta</button>
+                    <button onClick={(e)=>crearCuenta(e)}>{carga ? 'Creando...' : 'Crear Cuenta'}</button>
                 </form>
                 <Link to='/login' className={styles.crear}>Iniciar Sesion</Link>
             </div>

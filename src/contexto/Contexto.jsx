@@ -98,23 +98,21 @@ export function VaribalesContexto({ children }) {
                         if(usuario.rol.includes('analista') || usuario.rol.includes('admin')){
                             mostrarEstadisticas(clave)
                         }
+                        //navigate('/')
+                        console.log('ya esta | vamos a NOTAS carg', cargando)
                     } else {
                         localStorage.removeItem('token')
-                        navigate('/login')
-                        throw new Error("Token inválido o expirado :(");
+                        console.error("Token inválido o expirado :(");
+                        //throw new Error("Token inválido o expirado :(");
                     }
                 } catch (err) {
                     console.error("Error en FETCH al obtner Info", err);
                 }
             } else {
-                navigate('/login')
                 console.log('Objeto person Tiene un fallo o no hay TOKEN %c[Fallo en Array(rol)]','background-color:#dedede; padding:3px' )
             }
         } catch (err) {
-            navigate('/login')
-            console.log(' person | NO es un OBJETO correcto en localStorage', 'background-color: gold; padding:5px');
-            setToken(null);
-            setPerson(null);
+            console.log('%c person | NO es un OBJETO correcto en localStorage', 'background-color: gold; padding:5px');
         } finally {
             setCargando(false);
         }
@@ -128,6 +126,7 @@ export function VaribalesContexto({ children }) {
     return (
         <Contexto.Provider value={{ 
                 person, setPerson, token, setToken, 
+                cargando,
                 notas, ajustesUI, infoUser, analisis, setNotas,
                 mostrarNotas, ajustesColores, mostrarInfo, mostrarEstadisticas,
                 almacenarInfoEnContexto

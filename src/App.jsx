@@ -12,6 +12,7 @@ import { Info } from './paginas/info/info'
 import { Analisis } from './paginas/analisis/analisis'
 import { Ajustes } from './paginas/ajustes/ajustes'
 import { ProtectedRoute } from './componentes/ProtectedRoute'
+import { ProtecteDashboard } from './componentes/ProtectedDashboard'
 
 //CONTEXTO
 import { useContext } from 'react'
@@ -30,30 +31,35 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
 
-          <Route path='/dashboard' element={<Dashboard/>}>
-              <Route index element={<Navigate to="notas" replace/>}/> {/* Redige a /dashboard/notas */}
-              <Route path='notas' element={<Notas/>}/>
-              <Route path='info' element={<Info/>}/>
+          {/*ProtecteDashboard Protege todas las rutas /si no hay un token o person */}
+          <Route element={<ProtecteDashboard/>}>
+            <Route path='/dashboard' element={<Dashboard/>}>
+                <Route index element={<Navigate to="notas" replace/>}/> {/* Redige a /dashboard/notas */}
+                <Route path='notas' element={<Notas/>}/>
+                <Route path='info' element={<Info/>}/>
 
-              {/* RUTAS protegidas | con componente ProtectedRoute */}
-              <Route path='analisis' 
-                element={
-                  <ProtectedRoute user={!!person && (person.rol.includes('analista') || person.rol.includes('admin'))}>     {/*de esta manera para proteger solo una ruta*/}
-                      <Analisis/>
-                  </ProtectedRoute>                   
-                }
-              />
-              <Route path='ajustes' 
-                element={
-                    <ProtectedRoute user={!!person && person.rol.includes('admin')}>     {/*de esta manera para proteger solo una ruta*/}
-                        <Ajustes/>
-                    </ProtectedRoute>
-                }/>
+                {/* RUTAS protegidas | con componente ProtectedRoute */}
+                <Route path='analisis' 
+                  element={
+                    <ProtectedRoute user={!!person && (person.rol.includes('analista') || person.rol.includes('admin'))}>     {/*de esta manera para proteger solo una ruta*/}
+                        <Analisis/>
+                    </ProtectedRoute>                   
+                  }
+                />
+                <Route path='ajustes' 
+                  element={
+                      <ProtectedRoute user={!!person && person.rol.includes('admin')}>     {/*de esta manera para proteger solo una ruta*/}
+                          <Ajustes/>
+                      </ProtectedRoute>
+                  }/>
+            </Route>
           </Route>
       </Routes>
   )
 }
 
 export default App
+
+//{"id":9,"usuario":"David","rol":["analista"]}
 
 
